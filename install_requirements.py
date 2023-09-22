@@ -91,6 +91,7 @@ def install_requirements(verbose=False):
         "torchsde",
         "ninja",
         "pydantic",
+        "torchmetrics==0.11.4", # torchmetrics must be downgraded. If not, 1.1.0 version will cause error.
     ]
     pip_install_packages(common)
 

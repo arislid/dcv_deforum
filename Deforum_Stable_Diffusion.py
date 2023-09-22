@@ -228,7 +228,9 @@ def DeforumAnimArgs():
 # prompts
 prompts = {
     0: "a beautiful lake by Asher Brown Durand, trending on Artstation",
-    10: "a beautiful portrait of a woman by Artgerm, trending on Artstation",
+    10: "a portrait for a cyberpunk handsome male character who is a mob boss with a dark cunning intelect, \
+        include cyberware and a cybernetic eye, \
+        trending on Artstation",
 }
 
 neg_prompts = {
@@ -424,8 +426,10 @@ else:
 # !!   "id": "YDoi7at9avqC"
 # !! }}
 #@markdown **New Version**
-skip_video_for_run_all = True #@param {type: 'boolean'}
-create_gif = False #@param {type: 'boolean'}
+# skip_video_for_run_all = True #@param {type: 'boolean'}
+skip_video_for_run_all = False #@param {type: 'boolean'}
+# create_gif = False #@param {type: 'boolean'}
+create_gif = True #@param {type: 'boolean'}
 
 if skip_video_for_run_all == True:
     print('Skipping video creation, uncheck skip_video_for_run_all if you want to run it')

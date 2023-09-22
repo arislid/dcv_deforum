@@ -12,6 +12,8 @@ cc-outputs.log
 # Output Images
 output/
 outputs/
+test_api/
+logging/
 
 # Model files
 configs/

@@ -272,6 +272,9 @@ def render_animation(root, anim_args, args, cond_prompts, uncond_prompts):
         if turbo_steps > 1:
             last_frame -= last_frame%turbo_steps
         path = os.path.join(args.outdir,f"{args.timestring}_{last_frame:05}.png")
+        print()
+        print(path)
+        print("Why is the prompt printed? \n")
         img = cv2.imread(path)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         prev_sample = sample_from_cv2(img)

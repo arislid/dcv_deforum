@@ -33,31 +33,45 @@ def get_ffmpeg_path(ffmpeg_outdir, ffmpeg_timestring, ffmpeg_extension):
         print(e)
         print("error making path variables redefine args or use different mode")
 
-def make_mp4_ffmpeg(ffmpeg_args, display_ffmpeg=False, debug=False):
+def make_mp4_ffmpeg(ffmpeg_args, display_ffmpeg=False, debug=True):
 
-    if os.path.exists("./ffmpeg"):
-        ffmpeg_path = './ffmpeg'
-    else:
-        ffmpeg_path = 'ffmpeg'
+    # if os.path.exists("./ffmpeg"):
+    #     ffmpeg_path = './ffmpeg'
+    # else:
+    #     ffmpeg_path = 'ffmpeg'
+    ffmpeg_path = '/usr/bin/ffmpeg'
 
     # make mp4
+    # cmd = [
+    #     ffmpeg_path,
+    #     '-y',
+    #     '-vcodec', "png",
+    #     '-r', str(ffmpeg_args.ffmpeg_fps),
+    #     '-start_number', str(0),
+    #     '-i', ffmpeg_args.ffmpeg_image_path,
+    #     '-frames:v', str(ffmpeg_args.ffmpeg_maxframes),
+    #     '-c:v', 'libx264',
+    #     '-vf',
+    #     f'fps={ffmpeg_args.ffmpeg_fps}',
+    #     '-pix_fmt', 'yuv420p',
+    #     # '-preset', 'veryfast',
+    #     # '-crf', '16',
+    #     '-pattern_type', 'sequence',
+    #     ffmpeg_args.ffmpeg_mp4_path
+    # ]
     cmd = [
-        ffmpeg_path,
-        '-y',
-        '-vcodec', "png",
-        '-r', str(ffmpeg_args.ffmpeg_fps),
-        '-start_number', str(0),
-        '-i', ffmpeg_args.ffmpeg_image_path,
-        '-frames:v', str(ffmpeg_args.ffmpeg_maxframes),
-        '-c:v', 'libx264',
-        '-vf',
-        f'fps={ffmpeg_args.ffmpeg_fps}',
-        '-pix_fmt', 'yuv420p',
-        '-crf', '17',
-        '-preset', 'veryfast',
-        '-pattern_type', 'sequence',
-        ffmpeg_args.ffmpeg_mp4_path
+    ffmpeg_path,
+    '-y',
+    '-framerate', str(ffmpeg_args.ffmpeg_fps),  # Change -r to -framerate
+    '-i', ffmpeg_args.ffmpeg_image_path,  # The image path should have the format like '20230919123320_%05d.png'
+    '-c:v', 'libx264',
+    '-pix_fmt', 'yuv420p',
+    '-r', '15',  # The output frame rate
+    '-crf', '16',  
+    '-preset', 'veryfast',
+    ffmpeg_args.ffmpeg_mp4_path
     ]
+
 
     if debug:
         print(cmd)
@@ -76,10 +90,11 @@ def make_mp4_ffmpeg(ffmpeg_args, display_ffmpeg=False, debug=False):
 
 def make_gif_ffmpeg(ffmpeg_args, debug=False):
 
-    if os.path.exists("./ffmpeg"):
-        ffmpeg_path = './ffmpeg'
-    else:
-        ffmpeg_path = 'ffmpeg'
+    # if os.path.exists("./ffmpeg"):
+    #     ffmpeg_path = './ffmpeg'
+    # else:
+    #     ffmpeg_path = '/usr/bin/ffmpeg'
+    ffmpeg_path = '/usr/bin/ffmpeg'
 
     # make gif
     cmd = [
