@@ -1,4 +1,3 @@
-
 import subprocess, time, gc, os, sys
 import logging
 
@@ -90,7 +89,7 @@ stored_prompts = {
     "neg_prompts": {}
 }
 
-title_name = 'display-video-test'
+title_name = 'video_0925'
 class PromptsModel(BaseModel):
     positive_prompts: Dict[int, str] = Field(..., example={0: "a beautiful lake", 30: "a cyberpunk character", 60: "dystopian future"})
     negative_prompts: Dict[int, str] = Field(..., example={0: "mountain, snow, fire"})
@@ -226,3 +225,11 @@ async def display_video(request: Request, filename: str):
         return FileResponse(video_path, media_type="video/mp4")
     else:
         return {"message": "Video not found"}
+
+
+# TODO: add upscale video
+@app.post("/upscale-video")
+def upscale_video(args, upscale=True):
+    if upscale:
+        create_video(args)
+    return {"message": "Upscaling video is done."}

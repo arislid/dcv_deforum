@@ -4,7 +4,7 @@ def DeforumAnimArgs():
 
     #@markdown ####**Animation:**
     animation_mode = '2D' #@param ['None', '2D', '3D', 'Video Input', 'Interpolation'] {type:'string'}
-    max_frames = 120 #@param {type:"number"}
+    max_frames = 900 #@param {type:"number"}
     border = 'replicate' #@param ['wrap', 'replicate'] {type:'string'}
 
     #@markdown ####**Motion Parameters:**
